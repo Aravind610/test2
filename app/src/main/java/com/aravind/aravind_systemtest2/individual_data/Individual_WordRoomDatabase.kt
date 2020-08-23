@@ -23,8 +23,7 @@ abstract class individual_WordRoomDatabase : RoomDatabase() {
                 context: Context,
                 scope: CoroutineScope
         ): individual_WordRoomDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
+
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                         context.applicationContext,
@@ -45,14 +44,10 @@ abstract class individual_WordRoomDatabase : RoomDatabase() {
         private class WordDatabaseCallback(
                 private val scope: CoroutineScope
         ) : RoomDatabase.Callback() {
-            /**
-             * Override the onOpen method to populate the database.
-             * For this sample, we clear the database every time it is created or opened.
-             */
+
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
+
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
                         populateDatabase(database.wordDao())
@@ -61,19 +56,11 @@ abstract class individual_WordRoomDatabase : RoomDatabase() {
             }
         }
 
-        /**
-         * Populate the database in a new coroutine.
-         * If you want to start with more words, just add them.
-         */
+
         fun populateDatabase(individualWordDao: individualWordDao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
+
             individualWordDao.deleteAll()
 
-            var word = individualWord("Hello")
-            individualWordDao.insert(word)
-            word = individualWord("World!")
-            individualWordDao.insert(word)
         }
     }
 

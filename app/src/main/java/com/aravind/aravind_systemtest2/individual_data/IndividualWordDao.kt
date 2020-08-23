@@ -15,6 +15,9 @@ interface individualWordDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(individualWord: individualWord)
 
-    @Query("DELETE FROM word_table")
+    @Query("DELETE FROM word_table WHERE word = :id")
+    fun deleteById(id: String)
+
+    @Query("DELETE FROM  word_table")
     fun deleteAll()
 }

@@ -23,13 +23,14 @@ class group_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.individual_design)
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_tasks)
-        val adapter = individual_WordListAdapter(this)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         individualWordViewModel = ViewModelProvider(this).get(individual_WordViewModel::class.java)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_tasks)
+        val adapter = individual_WordListAdapter(this, individualWordViewModel)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is

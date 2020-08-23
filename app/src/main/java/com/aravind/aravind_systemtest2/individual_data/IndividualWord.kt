@@ -5,4 +5,5 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "word_table")
-data class individualWord(@PrimaryKey @ColumnInfo(name = "word") val word: String)
+data class individualWord(
+        @PrimaryKey @ColumnInfo(name = "word") val word: String)
