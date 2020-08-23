@@ -68,7 +68,7 @@ abstract class individual_WordRoomDatabase : RoomDatabase() {
         fun populateDatabase(individualWordDao: individualWordDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            individualWordDao.deleteAll(individualWordDao)
+            individualWordDao.deleteAll()
 
             var word = individualWord("Hello")
             individualWordDao.insert(word)

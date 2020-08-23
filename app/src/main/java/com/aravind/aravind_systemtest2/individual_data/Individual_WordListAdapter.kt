@@ -39,7 +39,7 @@ class individual_WordListAdapter internal constructor(
 
         holder.delete.setOnClickListener(View.OnClickListener {
            // val word = individualWord(data.getStringExtra(NewWordActivity.EXTRA_REPLY))
-            individualWordViewModel.delete(current)
+          //  individualWordViewModel.delete(current)
         })
 
     }

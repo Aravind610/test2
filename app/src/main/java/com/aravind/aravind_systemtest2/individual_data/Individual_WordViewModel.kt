@@ -32,7 +32,7 @@ class individual_WordViewModel(application: Application) : AndroidViewModel(appl
     fun insert(individualWord: individualWord) = viewModelScope.launch(Dispatchers.IO) {
         repositoryIndividual.insert(individualWord)
     }
-    fun delete(individualWord: individualWord) = viewModelScope.launch(Dispatchers.IO) {
-        repositoryIndividual.delete(individualWord)
-    }
+//    fun delete(individualWord: individualWord) = viewModelScope.launch(Dispatchers.IO) {
+//        repositoryIndividual.delete(individualWord)
+//    }
 }
