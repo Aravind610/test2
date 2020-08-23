@@ -21,4 +21,11 @@ class individual_WordRepository(private val individualWordDao: individualWordDao
     suspend fun insert(individualWord: individualWord) {
         individualWordDao.insert(individualWord)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun delete(individualWord: individualWord) {
+        individualWordDao.deleteAll(individualWord)
+    }
+
 }

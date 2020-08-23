@@ -2,10 +2,7 @@ package com.aravind.aravind_systemtest2.individual_data
 
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
+import androidx.room.*
 import com.aravind.aravind_systemtest2.individual_data.individualWord
 
 
@@ -18,6 +15,6 @@ interface individualWordDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(individualWord: individualWord)
 
-    @Query("DELETE FROM word_table")
-    fun deleteAll()
+    @Query("DELETE FROM word_table WHERE word")
+    fun deleteAll(individualWord: individualWord)
 }
